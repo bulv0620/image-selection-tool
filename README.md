@@ -1,4 +1,4 @@
-# graphic-selection-box
+# image-selection-box
 
 ## Project setup
 ```
