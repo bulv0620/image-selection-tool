@@ -18,7 +18,7 @@
                 @mouseleave="handleMouseleave(box)"
             >
                 <p class="box-info-title">
-                    <span>{{ `选框 ${box.id}` }}</span>
+                    <NameEditor v-model="box.name" :boxes="boxes"></NameEditor>
                     <i class="el-icon-delete delete-icon" @click.stop="handleDelete(box)"></i>
                 </p>
                 <div class="box-info-form">
@@ -39,10 +39,11 @@
 <script>
 import ConfigTitle from './ConfigTitle.vue';
 import BoxFormItem from './BoxFormItem.vue';
+import NameEditor from './NameEditor.vue';
 
 export default {
     name: 'BoxesCollapse',
-    components: { ConfigTitle, BoxFormItem },
+    components: { ConfigTitle, BoxFormItem, NameEditor },
     props: ['boxes', 'currentBox'],
     data() {
         return {

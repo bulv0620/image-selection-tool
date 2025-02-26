@@ -68,6 +68,9 @@ export default {
     },
     mounted() {
         document.addEventListener('keydown', (e) => {
+            if(this.hasFocusedInput()) {
+                return
+            }
             if(e.code === 'Space') {
                 this.handleSpaceDown()
             }
@@ -76,6 +79,9 @@ export default {
             }
         })
         document.addEventListener('keyup', (e) => {
+            if(this.hasFocusedInput()) {
+                return
+            }
             if(e.code === 'Space') {
                 this.handleSpaceUp()
             }
@@ -89,6 +95,13 @@ export default {
     },
 
     methods: {
+        hasFocusedInput() {
+            const activeElement = document.activeElement;
+            return activeElement instanceof HTMLInputElement || 
+                    activeElement instanceof HTMLTextAreaElement ||
+                    activeElement instanceof HTMLSelectElement;
+        },
+
         handleMouseMove(e) {
             console.log(e);
         },

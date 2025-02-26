@@ -301,6 +301,7 @@ export default {
                         y: data.y.toFixed(2),
                         width: (rectInfo.width / this.scale).toFixed(2),
                         height: (rectInfo.height / this.scale).toFixed(2),
+                        name: this.generateDefaultName(this.boxes),
                         flash: false
                     }
 
@@ -311,6 +312,15 @@ export default {
 
             this.isDragging = false;
             this.isSelecting = false;
+        },
+
+        generateDefaultName(existingFrames) {
+            // 匹配所有默认名称的数字部分
+            const maxNum = existingFrames.reduce((max, frame) => {
+                const match = frame.name.match(/^选框(\d+)$/);
+                return match ? Math.max(max, parseInt(match[1])) : max;
+            }, 0);
+            return `选框${maxNum + 1}`;
         },
 
         handleZoom(e) {
