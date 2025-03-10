@@ -109,14 +109,14 @@ export default {
 
         handleMouseenter(box) {
             this.boxes.forEach(el => {
-                el.flash = false
+                this.$set(el, 'flash', false)
             });
-            box.flash = true
+            this.$set(box, 'flash', true)
         },
 
         
         handleMouseleave(box) {
-            box.flash = false
+            this.$set(box, 'flash', false)
         }
     }
 }

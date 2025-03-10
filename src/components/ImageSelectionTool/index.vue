@@ -20,6 +20,12 @@ import WorkSpace from './components/WorkSpace.vue';
 export default {
     name: 'ImageSelectionTool',
     components: { Tools, Boxes, WorkSpace },
+    props: {
+        boxes: {
+            type: Array,
+            default: () => []
+        }
+    },
     data() {
         return {
             activeConfigMenu: ['1', '2'],
@@ -49,8 +55,6 @@ export default {
             currentTool: null,
             prevTool: null,
 
-            boxes: [
-            ],
             currentBox: null,
         }
     },

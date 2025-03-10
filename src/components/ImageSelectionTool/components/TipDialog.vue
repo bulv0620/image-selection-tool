@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import img from '../../../assets/tip.png'
+import img from '../assets/tip.png'
 export default {
     data() {
         return {

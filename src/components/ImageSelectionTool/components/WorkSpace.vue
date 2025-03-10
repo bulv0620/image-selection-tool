@@ -68,6 +68,7 @@
 
 <script>
 import TipDialog from './TipDialog.vue';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
     name: 'WorkSpace',
@@ -296,13 +297,12 @@ export default {
                     const data = this.convertToImageCoordinates(rectInfo.x, rectInfo.y, this.translateX, this.translateY, this.imgWidth, this.imgHeight, this.scale)
 
                     const box = {
-                        id: this.boxes.length === 0 ? 1 : Math.max(...this.boxes.map(el => el.id)) + 1,
+                        id: uuidv4(),
                         x: data.x.toFixed(2),
                         y: data.y.toFixed(2),
                         width: (rectInfo.width / this.scale).toFixed(2),
                         height: (rectInfo.height / this.scale).toFixed(2),
                         name: this.generateDefaultName(this.boxes),
-                        flash: false
                     }
 
                     // eslint-disable-next-line vue/no-mutating-props
